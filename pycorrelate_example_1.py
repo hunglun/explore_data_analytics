@@ -19,3 +19,11 @@ def test_correlate_1_time_lag():
     lags = np.arange(0, 20)
     G = pyc.pcorrelate(t, u, lags)
     assert(max(G) == G[1])  # 1 time unit lag!
+
+
+def test_correlate_1_time_lag_diff_sizes():
+    t = np.sort(np.random.randint(0, 10**5, size=size))
+    u = t[10:200] + [1]
+    lags = np.arange(0, 20)
+    G = pyc.pcorrelate(t, u, lags)
+    assert(max(G) == G[1])  # 1 time unit lag!
